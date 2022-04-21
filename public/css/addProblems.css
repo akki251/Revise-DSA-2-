@@ -1,0 +1,35 @@
+.btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  font-size: 1.3rem;
+  transition: all 0.3s ease-in-out;
+  text-transform: uppercase;
+  background-color: blue;
+  color: white;
+  font-weight: 700;
+  transition: all 0.5s ease-in-out;
+  box-shadow: 10px 10px 38px -7px rgba(0, 0, 0, 0.33);
+  -webkit-box-shadow: 10px 10px 38px -7px rgba(0, 0, 0, 0.33);
+  -moz-box-shadow: 10px 10px 38px -7px rgba(0, 0, 0, 0.33);
+}
+
+.form-wrapper form input,
+.form-wrapper select {
+  padding: 1rem 2rem;
+}
+
+input[type="text"] {
+  font-size: 2rem;
+}
+select {
+  font-size: 1.4rem;
+}
+
+select option {
+  font-size: 2rem;
+
+}
+
+#select {
+  font-size: 1.4rem;
+}

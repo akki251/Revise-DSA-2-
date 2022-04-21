@@ -1,0 +1,9 @@
+.main-container {
+  min-height: 90vh;
+}
+
+.wrapper img {
+  min-width: 30rem;
+  max-width: 35%;
+  object-fit: cover;
+}

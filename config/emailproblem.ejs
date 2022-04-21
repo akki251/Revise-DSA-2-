@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/a56865c4b1.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;500&family=Work+Sans:wght@300;400;500&display=swap");
+      *,
+      *::after,
+      *::before {
+        box-sizing: border-box !important;
+        margin: 0;
+        padding: 0;
+      }
+
+      table {
+        background-color: #151f28;
+      }
+
+      html,
+      body {
+        font-size: 42.5% !important;
+        line-height: 1.4;
+        font-family: "Work Sans", sans-serif;
+        min-height: 100vh;
+        background: rgb(2, 52, 73);
+        background: linear-gradient(
+          55deg,
+          rgba(2, 52, 73, 1) 0%,
+          rgba(1, 26, 36, 1) 42%
+        );
+        overflow-x: hidden !important;
+      }
+
+      .container {
+        max-width: 130rem;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 4px 8px;
+        font-size: 8px;
+        transition: all 0.3s ease-in-out;
+        background-color: white;
+        border: 0;
+        border-radius: 11px;
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+      .section-welcome {
+        padding: 8px 0;
+      }
+
+      .container > h3 {
+        color: #dff;
+        font-size: 30px;
+        font-weight: 300;
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+
+      h3,
+      h4 {
+        color: white;
+        font-size: 14px;
+      }
+
+      a {
+        text-decoration: none;
+      }
+      .container > h4 {
+        color: #dff;
+        text-align: center;
+        font-weight: 200;
+        font-size: 25px;
+      }
+
+      .problems-container {
+        padding: 1rem 0;
+      }
+
+      .problem {
+        background-color: rgb(49, 53, 82);
+        margin: 10px 0;
+        display: block;
+        padding: 5px 12px;
+        border-radius: 7px;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 10px 10px 49px -19px rgba(0, 0, 0, 0.54);
+        -webkit-box-shadow: 10px 10px 49px -19px rgba(0, 0, 0, 0.54);
+      }
+
+      .problem h3 {
+        color: #dff;
+        font-size: 15px;
+      }
+
+      .tag {
+        /* width: 300px; */
+        display: inline-block;
+        padding: 4px 7px;
+        font-size: 12px;
+        border-radius: 6px;
+        text-transform: uppercase;
+        margin-bottom: 5px;
+        background-color: #574f90;
+        color: white;
+        letter-spacing: 2px;
+      }
+
+      .question {
+        color: black;
+        font-weight: bold;
+      }
+      .tag h3 {
+        font-size: 5px;
+      }
+
+      .complete {
+        display: inline-block;
+      }
+
+      .condition {
+        font-size: 5px;
+        font-weight: lighter;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <section class="section-welcome">
+        <div class="container">
+          <h3 style="text-align: center">Hi <%= user.displayName %></h3>
+          <h4 style="text-align: center">Here is your set of Problems</h4>
+          <div class="problems-container d-flex flex-column">
+            <a href="<%= arrayQuestion.link %>" class="problem" target="_blank">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="question-box">
+                  <p class="tag">Array</p>
+                  <h3 class="question"><%= arrayQuestion.title %></h3>
+                </div>
+                <i class="fa-solid fa-up-right-from-square right-icon"></i>
+              </div>
+            </a>
+
+            <a
+              href="<%= stringQuestion.link %>"
+              class="problem"
+              target="_blank"
+            >
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="question-box">
+                  <p class="tag">String</p>
+                  <h3 class="question"><%= stringQuestion.title %></h3>
+                </div>
+                <i class="fa-solid fa-up-right-from-square right-icon"></i>
+              </div>
+            </a>
+
+            <a
+              href="<%= sortingQuestion.link %>"
+              class="problem"
+              target="_blank"
+            >
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="question-box">
+                  <p class="tag">searching and sorting</p>
+                  <h3 class="question"><%= sortingQuestion.title %></h3>
+                </div>
+                <i class="fa-solid fa-up-right-from-square right-icon"></i>
+              </div>
+            </a>
+
+            <a href="<%= linkedList.link %>" class="problem" target="_blank">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="question-box">
+                  <p class="tag">Linked List</p>
+                  <h3 class="question"><%= linkedList.title %></h3>
+                </div>
+                <i class="fa-solid fa-up-right-from-square right-icon"></i>
+              </div>
+            </a>
+
+            <a href="<%= binaryTrees.link %>" class="problem" target="_blank">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="question-box">
+                  <p class="tag">Binary Tree</p>
+                  <h3 class="question"><%= binaryTrees.title %></h3>
+                </div>
+                <i class="fa-solid fa-up-right-from-square right-icon"></i>
+              </div>
+            </a>
+
+            <a
+              href="<%=  binarySearchTrees.link %>"
+              class="problem"
+              target="_blank"
+            >
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="question-box">
+                  <p class="tag">binary Search Trees</p>
+                  <h3 class="question"><%= binarySearchTrees.title %></h3>
+                </div>
+                <i class="fa-solid fa-up-right-from-square right-icon"></i>
+              </div>
+            </a>
+
+            <a href="<%= greedy.link %>" class="problem" target="_blank">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="question-box">
+                  <p class="tag">greedy</p>
+                  <h3 class="question"><%= greedy.title %></h3>
+                </div>
+                <i class="fa-solid fa-up-right-from-square right-icon"></i>
+              </div>
+            </a>
+
+            <a href="<%= backTracking.link %>" class="problem" target="_blank">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="question-box">
+                  <p class="tag">BackTracking</p>
+                  <h3 class="question"><%= backTracking.title %></h3>
+                </div>
+                <i class="fa-solid fa-up-right-from-square right-icon"></i>
+              </div>
+            </a>
+
+            <a
+              href="<%= stacksandQueues.link %>"
+              class="problem"
+              target="_blank"
+            >
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="question-box">
+                  <p class="tag">Stacks and Queue</p>
+                  <h3 class="question"><%= stacksandQueues.title %></h3>
+                </div>
+                <i class="fa-solid fa-up-right-from-square right-icon"></i>
+              </div>
+            </a>
+
+            <a href="<%= Heap.link %>" class="problem" target="_blank">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="question-box">
+                  <p class="tag">Heap</p>
+                  <h3 class="question"><%= Heap.title %></h3>
+                </div>
+                <i class="fa-solid fa-up-right-from-square right-icon"></i>
+              </div>
+            </a>
+
+            <a href="<%= Graph.link %>" class="problem" target="_blank">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="question-box">
+                  <p class="tag">Graph</p>
+                  <h3 class="question"><%= Graph.title %></h3>
+                </div>
+                <i class="fa-solid fa-up-right-from-square right-icon"></i>
+              </div>
+            </a>
+
+            <a
+              href="<%=  DynamicProgramming.link %>"
+              class="problem"
+              target="_blank"
+            >
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="question-box">
+                  <p class="tag">Dynamic Programming</p>
+                  <h3 class="question"><%= DynamicProgramming.title %></h3>
+                </div>
+                <i class="fa-solid fa-up-right-from-square right-icon"></i>
+              </div>
+            </a>
+
+            <a
+              href=" <%= BitManipulation.link %>  "
+              class="problem"
+              target="_blank"
+            >
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="question-box">
+                  <p class="tag">Bit Manipulation</p>
+                  <h3 class="question"><%= BitManipulation.title %></h3>
+                </div>
+                <i class="fa-solid fa-up-right-from-square right-icon"></i>
+              </div>
+            </a>
+
+            <div
+              class="call-btns mx-auto d-flex flex-sm-column align-items-sm-center align-items-lg-start flex-lg-row align-items-start gap-5"
+            >
+              <form
+                method="POST"
+                action="https://revisedsa.herokuapp.com/completeEmail"
+                class="complete"
+              >
+                <input
+                  type="hidden"
+                  value=" <%= arrayQuestion.questionID %> "
+                  name="array"
+                />
+                <input
+                  type="hidden"
+                  value=" <%= stringQuestion.questionID %> "
+                  name="string"
+                />
+                <input
+                  type="hidden"
+                  value=" <%= sortingQuestion.questionID%> "
+                  name="sorting"
+                />
+                <input
+                  type="hidden"
+                  value=" <%= linkedList.questionID %> "
+                  name="linkedList"
+                />
+
+                <input
+                  type="hidden"
+                  value=" <%= binaryTrees.questionID %> "
+                  name="binaryTrees"
+                />
+
+                <input
+                  type="hidden"
+                  value=" <%= greedy.questionID %> "
+                  name="greedy"
+                />
+
+                <input
+                  type="hidden"
+                  value=" <%= backTracking.questionID %> "
+                  name="backTracking"
+                />
+
+                <input
+                  type="hidden"
+                  value=" <%= stacksandQueues.questionID %> "
+                  name="stacksandQueues"
+                />
+
+                <input
+                  type="hidden"
+                  value=" <%= Heap.questionID %> "
+                  name="heap"
+                />
+                <input
+                  type="hidden"
+                  value=" <%= binarySearchTrees.questionID %> "
+                  name="binarySearchTrees"
+                />
+                <input
+                  type="hidden"
+                  value=" <%= Graph.questionID %> "
+                  name="Graph"
+                />
+
+                <input
+                  type="hidden"
+                  value=" <%= DynamicProgramming.questionID %> "
+                  name="DynamicProgramming"
+                />
+
+                <input
+                  type="hidden"
+                  value=" <%= BitManipulation.questionID %> "
+                  name="BitManipulation"
+                />
+
+                <input
+                  type="hidden"
+                  value=" <%= emailTokenNew %> "
+                  name="emailToken"
+                />
+
+                <input type="hidden" value=" <%= user.id %>" name="userId" />
+
+                <button
+                  type="submit"
+                  style="text-align: center; font-size: 15px"
+                  class="btn"
+                >
+                  Mark as Complete
+                </button>
+                <div class="condition text-center mt-2">
+                  <span>These Problems Won't Repeat Until 5 Days</span>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <p style="color: white; text-align: center">
+        You received this email because you have created account with revise.
+        You can
+        <a
+          style="color: grey; text-decoration: underline"
+          href="https://revisedsa.herokuapp.com/unsubscribe/<%=  user.emailToken %>"
+          >unsubscribe</a
+        >
+        at any time.
+      </p>
+    </table>
+
+    <script>
+      $("#myAlert").on("closed.bs.alert");
+    </script>
+  </body>
+</html>

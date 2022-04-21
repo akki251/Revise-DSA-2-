@@ -1,0 +1,50 @@
+<link rel="stylesheet" href="/css/addProblems.css" />
+<main class="container py-5" style="min-height: 90vh">
+  <div class="form-wrapper">
+    <form
+      action="https://revisedsa.herokuapp.com/addProblems"
+      method="POST"
+      class="form-group"
+    >
+      <input
+        type="text"
+        placeholder="Add your Question here ☺️"
+        name="link"
+        id=""
+        class="form-control mb-3"
+      />
+      <select name="tag" id="select" class="form-control mb-3">
+        <option value="Array">Array</option>
+        <option value="String">String</option>
+        <option value="Searching & Sorting">Searching & Sorting</option>
+        <option value="LinkedList">LinkedList</option>
+        <option value="Binary Trees">binaryTrees</option>
+        <option value="Binary Search Trees">BinarySearchTrees</option>
+        <option value="Greedy">Greedy</option>
+        <option value="BackTracking">BackTracking</option>
+        <option value="Stacks & Queues">Stacks and Queues</option>
+        <option value="Heap">Heaps and PriorityQueue</option>
+        <option value="Graph">Graph</option>
+        <option value="Trie">Trie</option>
+        <option value="Dynamic Programming">Dynamic Programming</option>
+        <option value="Bit Manipulation">Bit Manipulation</option>
+      </select>
+      <button type="submit" class="btn">Add Question</button>
+    </form>
+  </div>
+</main>
+
+<!-- const arrayQuestion = fetchQuestions("Array", problems);
+const stringQuestion = fetchQuestions("String", problems);
+const sortingQuestion = fetchQuestions("Searching & Sorting", problems);
+const linkedList = fetchQuestions("LinkedList", problems);
+const binaryTrees = fetchQuestions("Binary Trees", problems);
+const binarySearchTrees = fetchQuestions("Binary Search Trees", problems);
+const greedy = fetchQuestions("Greedy", problems);
+const backTracking = fetchQuestions("BackTracking", problems);
+const stacksandQueues = fetchQuestions("Stacks & Queues", problems);
+const Heap = fetchQuestions("Heap", problems);
+const Graph = fetchQuestions("Graph", problems);
+const Trie = fetchQuestions("Trie", problems);
+const DynamicProgramming = fetchQuestions("Dynamic Programming", problems);
+const BitManipulation = fetchQuestions("Bit Manipulation", problems); -->

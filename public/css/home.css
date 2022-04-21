@@ -1,0 +1,145 @@
+.icon {
+  width: 3rem;
+  height: 3rem;
+  margin-left: 0.5rem;
+}
+body {
+  overflow-x: hidden;
+}
+
+.right-img-box {
+  margin: 0 auto;
+  width: 40%;
+}
+
+.right-img-box img {
+  min-width: 20rem;
+  display: block;
+
+  max-width: 100%;
+}
+.hero-heading {
+  font-size: 4.8rem;
+  font-weight: bolder;
+}
+
+.section-hero {
+  padding: 12.8rem 0;
+  min-height: 90vh;
+}
+
+.hero-desc {
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 1.4;
+  margin-top: 1rem;
+  width: 60%;
+}
+
+.section-heading {
+  font-size: 4rem;
+  margin-bottom: 2rem;
+}
+.section-features {
+  padding-bottom: 6.4rem;
+  row-gap: 12rem;
+}
+
+.feature-img-box-1 img {
+  max-width: 100%;
+  transform: translate(calc(-10% + 2vw), 2%) scale(1.1);
+}
+
+@media (max-width: 62em) {
+  .feature-img-box-1 img {
+    transform: translate(2%) scale(1.1);
+  }
+}
+
+.feature-head {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--secondary-light);
+}
+
+.feature-desc {
+  margin-top: 2rem;
+  font-size: 2rem;
+  font-weight: 300;
+  width: 80%;
+  color: var(--secondary-light);
+}
+
+.btn-outline {
+  width: fit-content;
+}
+
+.img-2-box img {
+  transform: translate(10%, 2%) scale(1.1);
+  max-width: 60%;
+}
+
+.feature-container {
+  row-gap: 6rem;
+}
+
+.section-accordian {
+  padding: 6.8rem 0;
+}
+
+.section-accordian h2 {
+  font-size: 2.4rem;
+}
+
+.accord-question {
+  font-size: 2rem;
+}
+
+.accord-answer {
+  font-size: 1.6rem;
+}
+
+.accordion-item {
+  margin: 2rem 0;
+  border: 2px solid white !important;
+  border-radius: 5px !important;
+}
+
+.accordion-button {
+  border: 5px solid white !important;
+  border-radius: 5px !important;
+}
+
+@media (max-width: 62em) {
+  html {
+    font-size: 9px !important;
+  }
+  .section-hero {
+    padding: 1rem 0;
+  }
+
+  .right-img-box {
+    width: 80%;
+    transform: translateX(10%);
+  }
+}
+
+@media (max-width: 32em) {
+  html {
+    font-size: 7px !important;
+  }
+  .section-hero {
+    padding: 12rem 0;
+  }
+
+  .hero-desc {
+    width: 80%;
+  }
+}
+
+.feature-img-box-1 .email-img {
+  transform: none !important;
+  width: 70%;
+}
+
+/* ///LOADER */

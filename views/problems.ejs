@@ -1,0 +1,509 @@
+<link rel="stylesheet" href="/css/problems.css" />
+<section class="section-welcome">
+  <div class="container">
+    <h3>Hi <%= user.displayName %></h3>
+    <h4>Here is your set of Problems</h4>
+
+    <div class="problems-container d-flex flex-column">
+
+
+      <div class="alert alert-info alert-dismissible fade show " style="background-color: transparent ; border: 1px solid #ffe; color: wheat; border-radius: 3px;" role="alert">
+
+        <div class="alert-container d-flex justify-content-between align-items-center  ">
+          <h3>Select question <i class="fa-solid fa-right-long mx-3" ></i> set it's Revision Frequency (maxDays to minDays) <i class="fa-solid fa-right-long mx-3"></i>Mark as complete all at the end🎉</h3>
+          <button type="button" class="close " data-dismiss="alert" aria-label="Close" style="outline:none ; background-color: transparent; border: none; padding: 1rem;">
+            <i style="font-size: 2rem; color: rgb(235, 235, 235);" class="fa-solid fa-square-xmark"></i>          </button>
+        </div>
+      </div>
+
+
+      <div class="sub-container">
+        <a href="<%= arrayQuestion.link  %>" class="  problem  <%= arrayQuestion.isPriority === true ?  "u-problem-priority" : "" %>  " target="_blank">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="question-box">
+              <p class="tag">Array</p>
+              <h3 class="question"><%= arrayQuestion.title %></h3>
+            </div>
+            <i class="fa-solid fa-up-right-from-square right-icon"></i>
+          </div>
+        </a>
+        <div class="range-box">
+          <input
+            id="range"
+            type="range"
+            class="freq-main"
+            step="5"
+            value="-10"
+            min="-15"
+            max="-5"
+            name="arrayfreq"
+          />
+          <label for="range">Revision Frequency</label>
+        </div>
+      </div>
+
+      <div class="sub-container">
+        <a href="<%= stringQuestion.link %>" class=" problem  <%= stringQuestion.isPriority === true ?  "u-problem-priority" : "" %> " target="_blank">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="question-box">
+              <p class="tag">String</p>
+              <h3 class="question"><%= stringQuestion.title %></h3>
+            </div>
+            <i class="fa-solid fa-up-right-from-square right-icon"></i>
+          </div>
+        </a>
+        <div class="range-box">
+          <input
+            id="range"
+            type="range"
+            class="freq-main"
+            step="5"
+            value="-10"
+            min="-15"
+            max="-5"
+            name="stringfreq"
+          />
+          <label for="range">Revision Frequency</label>
+        </div>
+      </div>
+
+      <div class="sub-container">
+        <a href="<%= sortingQuestion.link %>" class="problem  <%= sortingQuestion.isPriority === true ?  "u-problem-priority" : "" %>" target="_blank">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="question-box">
+              <p class="tag">searching and sorting</p>
+              <h3 class="question"><%= sortingQuestion.title %></h3>
+            </div>
+            <i class="fa-solid fa-up-right-from-square right-icon"></i>
+          </div>
+        </a>
+        <div class="range-box">
+          <input
+            id="range"
+            type="range"
+            class="freq-main"
+            step="5"
+            value="-10"
+            min="-15"
+            max="-5"
+            name="stringfreq"
+          />
+          <label for="range">Revision Frequency</label>
+        </div>
+      </div>
+
+      <div class="sub-container">
+        <a
+          href="<%= linkedList.link %>"
+          class="problem  <%= linkedList.isPriority === true ?  "u-problem-priority" : "" %>   "
+          target="_blank"
+        >
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="question-box">
+              <p class="tag">Linked List</p>
+              <h3 class="question"><%= linkedList.title %></h3>
+            </div>
+            <i class="fa-solid fa-up-right-from-square right-icon"></i>
+          </div>
+        </a>
+        <div class="range-box">
+          <input
+            id="range"
+            type="range"
+            class="freq-main"
+            step="5"
+            value="-10"
+            min="-15"
+            max="-5"
+            name="stringfreq"
+          />
+          <label for="range">Revision Frequency</label>
+        </div>
+      </div>
+
+      <div class="sub-container">
+        <a href="<%= binaryTrees.link %>" class="problem  <%= binaryTrees.isPriority === true ?  "u-problem-priority" : "" %>" target="_blank">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="question-box">
+              <p class="tag">Binary Tree</p>
+              <h3 class="question"><%= binaryTrees.title %></h3>
+            </div>
+            <i class="fa-solid fa-up-right-from-square right-icon"></i>
+          </div>
+        </a>
+        <div class="range-box">
+          <input
+            id="range"
+            type="range"
+            class="freq-main"
+            step="5"
+            value="-10"
+            min="-15"
+            max="-5"
+            name="stringfreq"
+          />
+          <label for="range">Revision Frequency</label>
+        </div>
+      </div>
+
+      <div class="sub-container">
+        <a
+          href="<%=  binarySearchTrees.link %>"
+          class="problem  <%= binarySearchTrees.isPriority === true ?  "u-problem-priority" : "" %>"
+          target="_blank"
+        >
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="question-box">
+              <p class="tag">binary Search Trees</p>
+              <h3 class="question"><%= binarySearchTrees.title %></h3>
+            </div>
+            <i class="fa-solid fa-up-right-from-square right-icon"></i>
+          </div>
+        </a>
+        <div class="range-box">
+          <input
+            id="range"
+            type="range"
+            class="freq-main"
+            step="5"
+            value="-10"
+            min="-15"
+            max="-5"
+            name="stringfreq"
+          />
+          <label for="range">Revision Frequency</label>
+        </div>
+      </div>
+
+      <div class="sub-container">
+        <a href="<%= greedy.link %>" class="problem  <%= greedy.isPriority === true ?  "u-problem-priority" : "" %>" target="_blank">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="question-box">
+              <p class="tag">greedy</p>
+              <h3 class="question"><%= greedy.title %></h3>
+            </div>
+            <i class="fa-solid fa-up-right-from-square right-icon"></i>
+          </div>
+        </a>
+        <div class="range-box">
+          <input
+            id="range"
+            type="range"
+            class="freq-main"
+            step="5"
+            value="-10"
+            min="-15"
+            max="-5"
+            name="stringfreq"
+          />
+          <label for="range">Revision Frequency</label>
+        </div>
+      </div>
+
+      <div class="sub-container">
+        <a href="<%= backTracking.link %>" class="problem  <%= backTracking.isPriority === true ?  "u-problem-priority" : "" %>" target="_blank">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="question-box">
+              <p class="tag">BackTracking</p>
+              <h3 class="question"><%= backTracking.title %></h3>
+            </div>
+            <i class="fa-solid fa-up-right-from-square right-icon"></i>
+          </div>
+        </a>
+        <div class="range-box">
+          <input
+            id="range"
+            type="range"
+            class="freq-main"
+            step="5"
+            value="-10"
+            min="-15"
+            max="-5"
+            name="stringfreq"
+          />
+          <label for="range">Revision Frequency</label>
+        </div>
+      </div>
+
+      <div class="sub-container">
+        <a href="<%= stacksandQueues.link %>" class="problem  <%= stacksandQueues.isPriority === true ?  "u-problem-priority" : "" %>" target="_blank">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="question-box">
+              <p class="tag">Stacks and Queue</p>
+              <h3 class="question"><%= stacksandQueues.title %></h3>
+            </div>
+            <i class="fa-solid fa-up-right-from-square right-icon"></i>
+          </div>
+        </a>
+        <div class="range-box">
+          <input
+            id="range"
+            type="range"
+            class="freq-main"
+            step="5"
+            value="-10"
+            min="-15"
+            max="-5"
+            name="stringfreq"
+          />
+          <label for="range">Revision Frequency</label>
+        </div>
+      </div>
+
+      <div class="sub-container">
+        <a href="<%= Heap.link %>" class="problem  <%= Heap.isPriority === true ?  "u-problem-priority" : "" %>" target="_blank">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="question-box">
+              <p class="tag">Heap</p>
+              <h3 class="question"><%= Heap.title %></h3>
+            </div>
+            <i class="fa-solid fa-up-right-from-square right-icon"></i>
+          </div>
+        </a>
+        <div class="range-box">
+          <input
+            id="range"
+            type="range"
+            class="freq-main"
+            step="5"
+            value="-10"
+            min="-15"
+            max="-5"
+            name="stringfreq"
+          />
+          <label for="range">Revision Frequency</label>
+        </div>
+      </div>
+
+      <div class="sub-container">
+        <a href="<%= Graph.link %>" class="problem  <%= Graph.isPriority === true ?  "u-problem-priority" : "" %>" target="_blank">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="question-box">
+              <p class="tag">Graph</p>
+              <h3 class="question"><%= Graph.title %></h3>
+            </div>
+            <i class="fa-solid fa-up-right-from-square right-icon"></i>
+          </div>
+        </a>
+        <div class="range-box">
+          <input
+            id="range"
+            type="range"
+            class="freq-main"
+            step="5"
+            value="-10"
+            min="-15"
+            max="-5"
+            name="stringfreq"
+          />
+          <label for="range">Revision Frequency</label>
+        </div>
+      </div>
+
+      <div class="sub-container">
+        <a
+          href="<%=  DynamicProgramming.link %>"
+          class="problem  <%= DynamicProgramming.isPriority === true ?  "u-problem-priority" : "" %>"
+          target="_blank"
+        >
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="question-box">
+              <p class="tag">Dynamic Programming</p>
+              <h3 class="question"><%= DynamicProgramming.title %></h3>
+            </div>
+            <i class="fa-solid fa-up-right-from-square right-icon"></i>
+          </div>
+        </a>
+        <div class="range-box">
+          <input
+            id="range"
+            type="range"
+            class="freq-main"
+            step="5"
+            value="-10"
+            min="-15"
+            max="-5"
+            name="stringfreq"
+          />
+          <label for="range">Revision Frequency</label>
+        </div>
+      </div>
+
+      <div class="sub-container">
+        <a
+          href=" <%= BitManipulation.link %>  "
+          class="problem  <%= BitManipulation.isPriority === true ?  "u-problem-priority" : "" %>"
+          target="_blank"
+        >
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="question-box">
+              <p class="tag">Bit Manipulation</p>
+              <h3 class="question"><%= BitManipulation.title %></h3>
+            </div>
+            <i class="fa-solid fa-up-right-from-square right-icon"></i>
+          </div>
+        </a>
+        <div class="range-box">
+          <input
+            id="range"
+            type="range"
+            class="freq-main"
+            step="5"
+            value="-10"
+            min="-15"
+            max="-5"
+            name="stringfreq"
+          />
+          <label for="range">Revision Frequency</label>
+        </div>
+      </div>
+
+      <div
+        class="call-btns text-center mx-auto d-flex flex-column align-items-center align-items-lg-start flex-lg-row align-items-start gap-5"
+      >
+        <form method="POST" action="/complete" class="complete">
+          <input
+            class="question-input"
+            type="hidden"
+            value=" <%= arrayQuestion.questionID %> "
+            name="array"
+          />
+          <input class="freq-hid" type="hidden" name="arrayfreq" />
+
+          <input
+            class="question-input"
+            type="hidden"
+            value=" <%= stringQuestion.questionID %> "
+            name="string"
+          />
+          <input class="freq-hid" type="hidden" name="stringfreq" />
+          <input
+            class="question-input"
+            type="hidden"
+            value=" <%= sortingQuestion.questionID%> "
+            name="sorting"
+          />
+          <input class="freq-hid" type="hidden" name="sortingfreq" />
+
+          <input
+            class="question-input"
+            type="hidden"
+            value=" <%= linkedList.questionID %> "
+            name="linkedList"
+          />
+          <input class="freq-hid" type="hidden" name="linkedfreq" />
+
+          <input
+            class="question-input"
+            type="hidden"
+            value=" <%= binaryTrees.questionID %> "
+            name="binaryTrees"
+          />
+          <input class="freq-hid" type="hidden" name="binaryfreq" />
+
+          <input
+            class="question-input"
+            type="hidden"
+            value=" <%= binarySearchTrees.questionID %> "
+            name="binarySearchTrees"
+          />
+
+          <input class="freq-hid" type="hidden" name="binarysearchfreq" />
+
+          <input
+            class="question-input"
+            type="hidden"
+            value=" <%= greedy.questionID %> "
+            name="greedy"
+          />
+          <input class="freq-hid" type="hidden" name="greedyfreq" />
+
+          <input
+            class="question-input"
+            type="hidden"
+            value=" <%= backTracking.questionID %> "
+            name="backTracking"
+          />
+          <input class="freq-hid" type="hidden" name="backtrackfreq" />
+
+          <input
+            class="question-input"
+            type="hidden"
+            value=" <%= stacksandQueues.questionID %> "
+            name="stacksandQueues"
+          />
+          <input class="freq-hid" type="hidden" name="stacksfreq" />
+
+          <input
+            class="question-input"
+            type="hidden"
+            value=" <%= Heap.questionID %> "
+            name="heap"
+          />
+          <input class="freq-hid" type="hidden" name="heapfreq" />
+
+          <input
+            class="question-input"
+            type="hidden"
+            value=" <%= Graph.questionID %> "
+            name="Graph"
+          />
+
+          <input class="freq-hid" type="hidden" name="graphfreq" />
+
+          <input
+            class="question-input"
+            type="hidden"
+            value=" <%= DynamicProgramming.questionID %> "
+            name="DynamicProgramming"
+          />
+          <input class="freq-hid" type="hidden" name="dpfreq" />
+
+          <input
+            class="question-input"
+            type="hidden"
+            value=" <%= BitManipulation.questionID %> "
+            name="BitManipulation"
+          />
+          <input class="freq-hid" type="hidden" name="bmfreq" />
+
+          <button type="submit" class="btn btn-submit">
+            Mark as Complete <i class="fa-solid fa-calendar-check"></i>
+          </button>
+          <div class="condition text-center mt-2">
+            <a href="#" class="condition-text text-white">
+              Completed Problems Won't Repeat Until selected number of days/freq!
+            </a>
+          </div>
+        </form>
+        <a
+          href="https://revisedsa.herokuapp.com/problems"
+          class="btn btn-outline"
+          >Refresh</a
+        >
+      </div>
+    </div>
+  </div>
+</section>
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+  crossorigin="anonymous"
+></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+  integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+  crossorigin="anonymous"
+></script>
+<script
+  src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+  integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+  crossorigin="anonymous"
+></script>
+
+<script>
+  $("#myAlert").on("closed.bs.alert");
+</script>
+
+<script src="/js/problem.js"></script>
