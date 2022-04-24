@@ -40,7 +40,7 @@ app.use(
   session({
     secret: process.env.GOOGLE_CLIENT_SECRET,
     resave: true,
-    cookie: { maxAge: 1000 * 60 * 60 * 1 },
+    cookie: { maxAge: 1000 * 60 * 60 * 24 },
     saveUninitialized: true,
     store: MongoStore.create({
       mongoUrl: process.env.MONGO_URI,
