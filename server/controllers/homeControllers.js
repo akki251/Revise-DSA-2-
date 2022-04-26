@@ -42,7 +42,7 @@ function fetchQuestions(tag, problems) {
     }
   });
 
-  console.log("ARRAY SIZE ☺️", arrayQ.length);
+  // console.log("ARRAY SIZE ☺️", arrayQ.length);
 
   if (arrayQ.length === 0) {
     // for old questions
