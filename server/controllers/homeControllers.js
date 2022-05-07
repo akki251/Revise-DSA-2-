@@ -2,8 +2,8 @@ const Question = require("../Models/Question");
 const User = require("../Models/User");
 const Leetcode = require("../Models/Leetcode");
 
-var gateway = false;
-const sendEmail = require("../../config/email");
+let role = null;
+// const sendEmail = require("../../config/email");
 
 module.exports.home = async function (req, res) {
   res.render("home");
@@ -15,40 +15,52 @@ function fetchQuestions(tag, problems) {
   // prob.tag === tag &&
   // date - prob.date > milliseconds &&
 
-  // for priority questions
-  problems.forEach((prob) => {
-    let milliseconds = prob.revisionFreq * 24 * 60 * 60 * 1000;
-    let oldDate = new Date("1970-01-01T00:00:00.000Z");
-    if (
-      prob.tag === tag &&
-      prob.date - oldDate != 0 &&
-      date - prob.date >= milliseconds &&
-      (prob.isPriority === true || prob.isLeetcode === true)
-    ) {
-      arrayQ.push(prob);
-    }
-  });
-
-  problems.forEach((prob) => {
-    let oldDate = new Date("1970-01-01T00:00:00.000Z");
-    let milliseconds = prob.revisionFreq * 24 * 60 * 60 * 1000;
-    if (
-      prob.tag === tag &&
-      prob.date - oldDate != 0 &&
-      date - prob.date > milliseconds &&
-      prob.isLeetcode === false
-    ) {
-      arrayQ.push(prob);
-    }
-  });
-
-  // console.log("ARRAY SIZE ☺️", arrayQ.length);
-
-  if (arrayQ.length === 0) {
+  if (role == "new") {
     // for old questions
     problems.forEach((prob) => {
+      let oldDate = new Date("1970-01-01T00:00:00.000Z");
       let milliseconds = 30 * 24 * 60 * 60 * 1000;
-      if (prob.tag === tag && date - prob.date >= milliseconds) {
+      if (
+        prob.tag === tag &&
+        (date - prob.date >= milliseconds || prob.date - oldDate === 0) &&
+        prob.isLeetcode === true
+      ) {
+        arrayQ.push(prob);
+      }
+    });
+
+    if (arrayQ.length === 0) {
+      problems.forEach((prob) => {
+        let oldDate = new Date("1970-01-01T00:00:00.000Z");
+        if (prob.tag === tag && prob.date - oldDate === 0) {
+          arrayQ.push(prob);
+        }
+      });
+    }
+  } else {
+    // for priority questions
+    problems.forEach((prob) => {
+      let milliseconds = prob.revisionFreq * 24 * 60 * 60 * 1000;
+      let oldDate = new Date("1970-01-01T00:00:00.000Z");
+      if (
+        prob.tag === tag &&
+        prob.date - oldDate != 0 &&
+        date - prob.date >= milliseconds &&
+        (prob.isPriority === true || prob.isLeetcode === true)
+      ) {
+        arrayQ.push(prob);
+      }
+    });
+
+    problems.forEach((prob) => {
+      let oldDate = new Date("1970-01-01T00:00:00.000Z");
+      let milliseconds = prob.revisionFreq * 24 * 60 * 60 * 1000;
+      if (
+        prob.tag === tag &&
+        prob.date - oldDate != 0 &&
+        date - prob.date > milliseconds &&
+        prob.isLeetcode === false
+      ) {
         arrayQ.push(prob);
       }
     });
@@ -71,11 +83,18 @@ function fetchQuestions(tag, problems) {
 
 module.exports.problems = async function (req, res) {
   try {
+    console.log(req.query);
+
     let user = await User.findOne({ _id: req.user.id });
 
     // let user = await User.findOne({ role: "admin" });
     // res.locals.user = user;
 
+    if (req.query.role === "newQuestions") {
+      role = "new";
+    } else {
+      role = null;
+    }
     const problems = user.problems;
 
     const arrayQuestion = fetchQuestions("Array", problems);
