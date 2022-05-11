@@ -57,7 +57,6 @@ function fetchQuestions(tag, problems) {
       let milliseconds = prob.revisionFreq * 24 * 60 * 60 * 1000;
       if (
         prob.tag === tag &&
-        prob.date - oldDate != 0 &&
         date - prob.date > milliseconds &&
         prob.isLeetcode === false
       ) {
