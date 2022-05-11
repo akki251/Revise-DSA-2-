@@ -3,7 +3,7 @@ const User = require("../Models/User");
 const Leetcode = require("../Models/Leetcode");
 
 let role = null;
-// const sendEmail = require("../../config/email");
+const sendEmail = require("../../config/email");
 
 module.exports.home = async function (req, res) {
   res.render("home");
@@ -161,7 +161,7 @@ function updateUserDate(id, questionID, freq) {
   });
 }
 
-module.exports.complete = function (req, res) {
+module.exports.complete = async function (req, res) {
   try {
     // res.json(req.body);
 
@@ -184,8 +184,10 @@ module.exports.complete = function (req, res) {
         throw "Cannot Update Questions";
       }
     }
+    const user = await User.findById(id);
+    sendEmail(user);
 
-    console.log(resultArray);
+    // console.log(resultArray);
     res.redirect("/success");
   } catch (error) {
     console.log(error);
