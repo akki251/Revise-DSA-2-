@@ -51,19 +51,17 @@ function fetchQuestions(tag, problems) {
         arrayQ.push(prob);
       }
     });
-
-    problems.forEach((prob) => {
-      let oldDate = new Date("1970-01-01T00:00:00.000Z");
-      let milliseconds = prob.revisionFreq * 24 * 60 * 60 * 1000;
-      if (
-        prob.tag === tag &&
-        date - prob.date > milliseconds &&
-        prob.isLeetcode === false
-      ) {
-        arrayQ.push(prob);
-      }
-    });
+    if (arrayQ.length === 0) {
+      problems.forEach((prob) => {
+        let milliseconds = prob.revisionFreq * 24 * 60 * 60 * 1000;
+        if (prob.tag === tag && date - prob.date > milliseconds) {
+          arrayQ.push(prob);
+        }
+      });
+    }
   }
+
+  console.log(arrayQ);
 
   var size = arrayQ.length;
 
