@@ -282,7 +282,9 @@ exports.addProblemsForm = async (req, res) => {
         if (err) {
           console.log(err);
         } else {
-          console.log(user);
+          console.log('SUCCESS');
+          // console.log(u
+          // ser);
         }
       });
     }
