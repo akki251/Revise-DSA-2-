@@ -1,12 +1,12 @@
-const Question = require("../Models/Question");
-const User = require("../Models/User");
-const Leetcode = require("../Models/Leetcode");
+const Question = require('../Models/Question');
+const User = require('../Models/User');
+const Leetcode = require('../Models/Leetcode');
 
 let role = null;
-const sendEmail = require("../../config/email");
+const sendEmail = require('../../config/email');
 
 module.exports.home = async function (req, res) {
-  res.render("home");
+  res.render('home');
 };
 
 function fetchQuestions(tag, problems) {
@@ -15,10 +15,10 @@ function fetchQuestions(tag, problems) {
   // prob.tag === tag &&
   // date - prob.date > milliseconds &&
 
-  if (role == "new") {
+  if (role == 'new') {
     // for old questions
     problems.forEach((prob) => {
-      let oldDate = new Date("1970-01-01T00:00:00.000Z");
+      let oldDate = new Date('1970-01-01T00:00:00.000Z');
       let milliseconds = 30 * 24 * 60 * 60 * 1000;
       if (
         prob.tag === tag &&
@@ -31,7 +31,7 @@ function fetchQuestions(tag, problems) {
 
     if (arrayQ.length === 0) {
       problems.forEach((prob) => {
-        let oldDate = new Date("1970-01-01T00:00:00.000Z");
+        let oldDate = new Date('1970-01-01T00:00:00.000Z');
         if (prob.tag === tag && prob.date - oldDate === 0) {
           arrayQ.push(prob);
         }
@@ -41,7 +41,7 @@ function fetchQuestions(tag, problems) {
     // for priority questions
     problems.forEach((prob) => {
       let milliseconds = prob.revisionFreq * 24 * 60 * 60 * 1000;
-      let oldDate = new Date("1970-01-01T00:00:00.000Z");
+      let oldDate = new Date('1970-01-01T00:00:00.000Z');
       if (
         prob.tag === tag &&
         prob.date - oldDate != 0 &&
@@ -67,9 +67,8 @@ function fetchQuestions(tag, problems) {
 
   if (size === 0) {
     return {
-      link: "#",
-      title:
-        "Take a BREAK , You Have tried all questions from this topic in last 5 Days",
+      link: '#',
+      title: 'Take a BREAK , You Have tried all questions from this topic in last 5 Days',
     };
   }
 
@@ -87,29 +86,29 @@ module.exports.problems = async function (req, res) {
     // let user = await User.findOne({ role: "admin" });
     // res.locals.user = user;
 
-    if (req.query.role === "newQuestions") {
-      role = "new";
+    if (req.query.role === 'newQuestions') {
+      role = 'new';
     } else {
       role = null;
     }
     const problems = user.problems;
 
-    const arrayQuestion = fetchQuestions("Array", problems);
-    const stringQuestion = fetchQuestions("String", problems);
-    const sortingQuestion = fetchQuestions("Searching & Sorting", problems);
-    const linkedList = fetchQuestions("LinkedList", problems);
-    const binaryTrees = fetchQuestions("Binary Trees", problems);
-    const binarySearchTrees = fetchQuestions("Binary Search Trees", problems);
-    const greedy = fetchQuestions("Greedy", problems);
-    const backTracking = fetchQuestions("BackTracking", problems);
-    const stacksandQueues = fetchQuestions("Stacks & Queues", problems);
-    const Heap = fetchQuestions("Heap", problems);
-    const Graph = fetchQuestions("Graph", problems);
-    const Trie = fetchQuestions("Trie", problems);
-    const DynamicProgramming = fetchQuestions("Dynamic Programming", problems);
-    const BitManipulation = fetchQuestions("Bit Manipulation", problems);
+    const arrayQuestion = fetchQuestions('Array', problems);
+    const stringQuestion = fetchQuestions('String', problems);
+    const sortingQuestion = fetchQuestions('Searching & Sorting', problems);
+    const linkedList = fetchQuestions('LinkedList', problems);
+    const binaryTrees = fetchQuestions('Binary Trees', problems);
+    const binarySearchTrees = fetchQuestions('Binary Search Trees', problems);
+    const greedy = fetchQuestions('Greedy', problems);
+    const backTracking = fetchQuestions('BackTracking', problems);
+    const stacksandQueues = fetchQuestions('Stacks & Queues', problems);
+    const Heap = fetchQuestions('Heap', problems);
+    const Graph = fetchQuestions('Graph', problems);
+    const Trie = fetchQuestions('Trie', problems);
+    const DynamicProgramming = fetchQuestions('Dynamic Programming', problems);
+    const BitManipulation = fetchQuestions('Bit Manipulation', problems);
 
-    res.render("problems", {
+    res.render('problems', {
       arrayQuestion,
       stringQuestion,
       sortingQuestion,
@@ -126,9 +125,9 @@ module.exports.problems = async function (req, res) {
       BitManipulation,
     });
   } catch (error) {
-    console.log(error + "😔😔😔");
-    res.render("error", {
-      message: "Cannot Fetch Problems Please try again",
+    console.log(error + '😔😔😔');
+    res.render('error', {
+      message: 'Cannot Fetch Problems Please try again',
     });
   }
 };
@@ -139,15 +138,15 @@ function updateUserDate(id, questionID, freq) {
   User.updateOne(
     {
       _id: id,
-      "problems.questionID": questionID,
+      'problems.questionID': questionID,
     },
 
     {
       $set: {
-        "problems.$.date": date,
-        "problems.$.revisionFreq": freq,
+        'problems.$.date': date,
+        'problems.$.revisionFreq': freq,
       },
-    }
+    },
   ).exec(function (err, user) {
     if (err) {
       console.log(err);
@@ -166,39 +165,34 @@ module.exports.complete = async function (req, res) {
 
     const problemobj = req.body;
 
-    var resultArray = Object.keys(problemobj).map((key) => [
-      key.toString(),
-      problemobj[key],
-    ]);
+    var resultArray = Object.keys(problemobj).map((key) => [key.toString(), problemobj[key]]);
 
     for (let index = 0; index < resultArray.length - 1; index += 2) {
       let questionID = resultArray[index][1].trim();
       let freq = Math.abs(resultArray[index + 1][1] * 1);
-      console.log(questionID);
-      console.log(freq);
 
       if (updateUserDate(id, questionID, freq) === null) {
-        throw "Cannot Update Questions";
+        throw 'Cannot Update Questions';
       }
     }
     const user = await User.findById(id);
     sendEmail(user);
 
     // console.log(resultArray);
-    res.redirect("/success");
+    res.redirect('/success');
   } catch (error) {
     console.log(error);
-    res.render("error", {
+    res.render('error', {
       message: error,
     });
   }
 };
 
 module.exports.error = function (req, res) {
-  res.render("error");
+  res.render('error');
 };
 module.exports.success = function (req, res) {
-  res.render("success");
+  res.render('success');
 };
 
 module.exports.unsubscribe = async function (req, res) {
@@ -208,11 +202,11 @@ module.exports.unsubscribe = async function (req, res) {
     let user = await User.findOne({ emailToken });
 
     if (!user) {
-      throw "User not Found";
+      throw 'User not Found';
     }
 
     if (user.subscribed === false) {
-      throw "You are already Unsubscribed";
+      throw 'You are already Unsubscribed';
     }
 
     User.updateOne(
@@ -221,21 +215,21 @@ module.exports.unsubscribe = async function (req, res) {
         $set: {
           subscribed: false,
         },
-      }
+      },
     ).exec((err, user) => {
       if (!err) {
-        res.json("You have successfully unsubscribed from the list");
+        res.json('You have successfully unsubscribed from the list');
       }
     });
   } catch (error) {
-    res.render("error", {
+    res.render('error', {
       message: error,
     });
   }
 };
 
 exports.addProblems = async (req, res) => {
-  res.render("addProblems");
+  res.render('addProblems');
 };
 
 exports.addProblemsForm = async (req, res) => {
@@ -246,7 +240,7 @@ exports.addProblemsForm = async (req, res) => {
     const isPresent = await Question.findOne({ link: link });
 
     if (!isPresent) {
-      const titleSlug = link.split("problems")[1];
+      const titleSlug = link.split('problems')[1];
       const title = titleSlug.slice(1, titleSlug.length - 1);
       const obj = {
         ...req.body,
@@ -274,15 +268,16 @@ exports.addProblemsForm = async (req, res) => {
       User.updateOne(
         {
           _id: id,
-          "problems.link": link,
+          'problems.link': link,
         },
 
         {
           $set: {
-            "problems.$.date": date,
-            "problems.$.revisionFreq": 2,
+            'problems.$.date': date,
+            'problems.$.revisionFreq': 2,
+            'problems.$.isPriority': true,
           },
-        }
+        },
       ).exec(function (err, user) {
         if (err) {
           console.log(err);
@@ -292,8 +287,8 @@ exports.addProblemsForm = async (req, res) => {
       });
     }
 
-    res.redirect("/success");
+    res.redirect('/success');
   } catch (error) {
-    console.log(error + "😔");
+    console.log(error + '😔');
   }
 };
