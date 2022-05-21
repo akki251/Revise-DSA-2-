@@ -46,7 +46,8 @@ function fetchQuestions(tag, problems) {
         prob.tag === tag &&
         prob.date - oldDate != 0 &&
         date - prob.date >= milliseconds &&
-        (prob.isPriority === true || prob.isLeetcode === true)
+        prob.isPriority === true &&
+        prob.isLeetcode === true
       ) {
         arrayQ.push(prob);
       }
@@ -264,6 +265,8 @@ exports.addProblemsForm = async (req, res) => {
       await currentUser.save();
     } else {
       const id = user._id;
+
+      console.log(id);
 
       User.updateOne(
         {
