@@ -73,7 +73,7 @@
       <div class="nav-container py-5">
         <nav>
           <div class="logo-box">
-            <a href="https://revisedsa.herokuapp.com/problems"
+            <a href="https://revisedsa.cyclic.app/problems"
               ><img src="/imgsheroku/logo.png" alt=""
             /></a>
           </div>
@@ -84,11 +84,11 @@
             <% } %> <% if(!user) { %>
             <a class="btn btn-outline" href="/auth/google">Explore now</a>
             <% } %> <% if(user && user.role === "admin"){ %>
-            <a href="https://revisedsa.herokuapp.com/addProblems">
+            <a href="https://revisedsa.cyclic.app/addProblems">
               Add Questions</a
             >
             <a
-              href="https://revisedsa.herokuapp.com/problems/?role=newQuestions"
+              href="https://revisedsa.cyclic.app/problems/?role=newQuestions"
               >Switch to new Questions</a
             >
             <%} %>
