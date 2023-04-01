@@ -56,7 +56,7 @@ function fetchQuestions(tag, problems) {
       let oldDate = new Date('1970-01-01T00:00:00.000Z');
       problems.forEach((prob) => {
         let milliseconds = prob.revisionFreq * 24 * 60 * 60 * 1000;
-        if (prob.tag === tag && date - prob.date > milliseconds && prob.date - oldDate != 0) {
+        if (prob.tag === tag && date - prob.date > milliseconds && prob.date - oldDate === 0) {
           arrayQ.push(prob);
         }
       });
